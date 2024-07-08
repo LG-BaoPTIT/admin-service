@@ -9,4 +9,5 @@ public class JobQueue {
     public static final String ADD_ROLE_GROUP_QUEUE = "add-role-group";
     public static final String UPDATE_ROLE = "update-roleGroup";
     public static final String DELETE_ROLE = "delete-roleGroup";
+    public static final String LOCK_ACCOUNT_NOTICE_QUEUE = "lock account notice" ;
 }

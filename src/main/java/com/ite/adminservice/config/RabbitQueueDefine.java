@@ -17,25 +17,25 @@ public class RabbitQueueDefine {
 
     @Bean
     public Queue emailApproveAccountQueue() {
-        return new Queue(JobQueue.APPROVED_ACCOUNT_NOTICE_QUEUE, false);
+        return new Queue(JobQueue.APPROVED_ACCOUNT_NOTICE_QUEUE, true);
     }
 
     @Bean
-    public Queue createAdminAccountQueue(){ return new Queue(JobQueue.CREATE_ADMIN_ACCOUNT_QUEUE,false);}
+    public Queue createAdminAccountQueue(){ return new Queue(JobQueue.CREATE_ADMIN_ACCOUNT_QUEUE,true);}
 
     @Bean
-    public Queue updateAdminAccountQueue(){return new Queue(JobQueue.UPDATE_ADMIN_ACCOUNT_QUEUE,false);}
+    public Queue updateAdminAccountQueue(){return new Queue(JobQueue.UPDATE_ADMIN_ACCOUNT_QUEUE,true);}
 
     @Bean
-    public Queue resetPasswordQueue(){return  new Queue(JobQueue.RESET_PASSWORD_NOTICE_QUEUE,false);}
+    public Queue resetPasswordQueue(){return  new Queue(JobQueue.RESET_PASSWORD_NOTICE_QUEUE,true);}
 
     @Bean
-    public Queue updateRoleGroup(){return  new Queue(JobQueue.UPDATE_ROLE,false);}
+    public Queue updateRoleGroup(){return  new Queue(JobQueue.UPDATE_ROLE,true);}
     @Bean
-    public Queue deleteRoleGroup(){return  new Queue(JobQueue.DELETE_ROLE,false);}
+    public Queue deleteRoleGroup(){return  new Queue(JobQueue.DELETE_ROLE,true);}
 
     @Bean
-    public Queue addRoleGroupQueue(){return new Queue(JobQueue.ADD_ROLE_GROUP_QUEUE,false);}
+    public Queue addRoleGroupQueue(){return new Queue(JobQueue.ADD_ROLE_GROUP_QUEUE,true);}
 
 
     //    ===========================================================================================================================
@@ -83,6 +83,17 @@ public class RabbitQueueDefine {
     @Bean
     public Binding bindingDeleteRoleGroupQueueToRoleGroupExchange(Queue deleteRoleGroup, DirectExchange roleGroupExchange){
         return BindingBuilder.bind(deleteRoleGroup).to(roleGroupExchange).with("deleteRole.routing.key");
+    }
+
+
+    @Bean
+    public Queue lockAccountNoticeQueue(){
+        return new Queue(JobQueue.LOCK_ACCOUNT_NOTICE_QUEUE,true);
+    }
+
+    @Bean
+    public Binding bindingLockAccountNoticeQueueToEmailExchange(Queue lockAccountNoticeQueue, DirectExchange emailExchange){
+        return BindingBuilder.bind(lockAccountNoticeQueue).to(emailExchange).with("lockAccountNotice.routing.key");
     }
 
 }
