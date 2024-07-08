@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: admin-service
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: db_adminservice
+  data:
+    mongodb:
+      database: db_adminservice
+      uri: mongodb+srv://trivm30092001:y2056XEHlqmKTpiP@cluster0.ipdtu5z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+
+  redis:
+    host: 172.19.0.4
+    port: 6379
+  rabbitmq:
+      host: 172.19.0.3
+      port: 5672
+      username: guest
+      password: guest
+      virtual-host: core
+
+jwt:
+  resetPassword:
+    secretKey: adminite@123!4569999
+    expiration: 600000
+
+
+  jackson:
+    time-zone: Asia/Ho_Chi_Minh
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 9001
+api:
+  key: ITE-INTERN
+
+payment:
+  accessCode: EXBNKNLPPH
+  hashSecret: e9240d54a011f5cf6564d668baf5e9bc
+  merchantId: 102597
+  cancelUrl: http://localhost:4028/payment-result
+  ipnUrl: https://99d1-2405-4800-1f04-1300-3038-c5-aa8b-6a41.ngrok-free.app/ecommerce/payment/handleResult
+  returnUrl: http://localhost:4028/payment-result
+  urlPayment: https://dev-api.payday.vn/merchants/create-order
+  urlTransactionDetail: https://dev-api.payday.vn/merchants/transaction-detail
+  urlRefund: https://dev-api.payday.vn/refund
