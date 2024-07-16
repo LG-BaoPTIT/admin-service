@@ -37,6 +37,12 @@ public class RabbitQueueDefine {
     @Bean
     public Queue addRoleGroupQueue(){return new Queue(JobQueue.ADD_ROLE_GROUP_QUEUE,true);}
 
+    @Bean
+    public Queue lockAccountNoticeQueue(){
+        return new Queue(JobQueue.LOCK_ACCOUNT_NOTICE_QUEUE,true);
+    }
+
+
 
     //    ===========================================================================================================================
     @Bean
@@ -86,10 +92,6 @@ public class RabbitQueueDefine {
     }
 
 
-    @Bean
-    public Queue lockAccountNoticeQueue(){
-        return new Queue(JobQueue.LOCK_ACCOUNT_NOTICE_QUEUE,true);
-    }
 
     @Bean
     public Binding bindingLockAccountNoticeQueueToEmailExchange(Queue lockAccountNoticeQueue, DirectExchange emailExchange){

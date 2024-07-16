@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 
+
 @Configuration
 @EnableRabbit
 @EnableAutoConfiguration(exclude = RabbitAutoConfiguration.class)
@@ -38,8 +39,6 @@ public class RabbitMQConfig {
 
     @Value("${spring.rabbitmq.virtual-host}")
     private String rabbitVirtualHost;
-
-
 //    @Value("${spring.rabbitmq.virtual-host-job}")
 //    private String rabbitVirtualHostJob;
 
@@ -79,7 +78,4 @@ public class RabbitMQConfig {
         factory.setDefaultRequeueRejected(false);
         return factory;
     }
-
-
 }
-
